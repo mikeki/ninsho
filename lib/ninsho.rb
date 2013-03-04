@@ -9,4 +9,5 @@ module Ninsho
   end
 end
 
+require 'ninsho/routes_drawer'
 require 'ninsho/rails'
