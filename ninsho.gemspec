@@ -20,4 +20,6 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
+  gem.add_dependency("orm_adapter", "~> 0.1")
+  gem.add_dependency "railties", "~> 3.1"
 end
