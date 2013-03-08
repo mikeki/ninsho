@@ -23,6 +23,8 @@ module ActionDispatch::Routing
 
      def ninsho_on(resources_name)
        drawer = Ninsho::RoutesDrawer.new resources_name
+       Ninsho.resource_class = drawer.to
+       Ninsho.resource_name = drawer.resource
        ninsho_session(drawer.singular_name)
      end
 

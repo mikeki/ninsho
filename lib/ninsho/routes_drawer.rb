@@ -16,10 +16,17 @@ module Ninsho
   #   # is the class to be loaded from routes, given in the route as :class_name.
   #
   class RoutesDrawer #:nodoc:
-    attr_reader :singular_name
+    attr_reader :singular_name, :klass, :resource
 
     def initialize(name)
+      @resource = name.to_s
       @singular_name = name.to_s.singularize
+      @klass = Ninsho.ref(@singular_name.classify)
+    end
+
+    # Gives the class the mapping points to.
+    def to
+      @klass.get
     end
   end
 end
