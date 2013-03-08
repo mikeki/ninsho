@@ -1,6 +1,6 @@
 class NinshoController < Ninsho.parent_controller.constantize
 
-  
+  include NinshoHelper  
   helpers = %w(resource resource_name resource_class resource_params)
   hide_action *helpers
   helper_method *helpers
@@ -15,7 +15,10 @@ class NinshoController < Ninsho.parent_controller.constantize
   end
 
   def resource_params
-    params[resource_name]
+    {
+      provider: env['omniauth.auth']['provider'],
+      uid: env['omniauth.auth']['uid']
+    }
   end
 
   # Proxy to devise map name
@@ -32,9 +35,9 @@ class NinshoController < Ninsho.parent_controller.constantize
     instance_variable_set(:"@#{resource_name}", new_resource)
   end
 
-    # Build a devise resource.
+  # Build a devise resource.
   # Assignment bypasses attribute protection when :unsafe option is passed
-  def build_resource(hash = nil, options = {})
-      self.resource = resource_class.new(hash)
+  def build_resource 
+      self.resource = resource_class.new(resource_params)
   end
 end

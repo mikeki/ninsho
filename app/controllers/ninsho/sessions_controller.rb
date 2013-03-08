@@ -1,11 +1,18 @@
 class Ninsho::SessionsController < NinshoController
 
   def new
-    @resource = build_resource(nil, unsafe: true) 
+    @providers = Ninsho.providers
   end
 
   def create
-    
+    resource = build_resource
+    user = resource.build_user
+    if resource.save
+      sign_in resource.user_id
+      redirect_to_root
+    else
+      redirect_to_root
+    end
   end
 
   def destroy

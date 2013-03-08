@@ -6,4 +6,8 @@ Ninsho.setup do |config|
   # Load and configure the ORM. Supports :active_record
   require 'ninsho/orm/active_record'
 
+
+  #Providers
+  config.providers = [ :facebook ]
+
 end

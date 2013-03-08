@@ -33,7 +33,7 @@ module ActionDispatch::Routing
      def ninsho_session(name) #:nodoc:
        resource :session, :only => [], :controller => 'ninsho/sessions', :path => "" do
        get :new, :path => 'sign_in', as: "new_#{name}"
-       get :create, path: '/:provider/callback', as: "#{name}"
+       match :create, path: "auth/:provider/callback", as: "#{name}"
        delete :destroy, path: 'sign_out', as: "destroy_#{name}"
      end
      end

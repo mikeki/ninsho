@@ -17,6 +17,9 @@ module Ninsho
 
   mattr_accessor :resource_name
   @@resource_name = ""
+
+  mattr_accessor :providers
+  @@providers = [ :facebook ]
   
   def self.setup
     yield self
