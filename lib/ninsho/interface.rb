@@ -1,3 +1,5 @@
+require 'ninsho/authentication'
+
 module Ninsho
   module Interface
     def self.included(base)
@@ -17,6 +19,10 @@ module Ninsho
           belongs_to associated_model.to_sym
           Ninsho.parent_resource_name = Ninsho.ref(associated_model.to_s.classify).get
         end
+      end
+
+      def from_omniauth(omniauth = nil)
+        Ninsho::Authentication.new(omniauth)
       end
     end
   end

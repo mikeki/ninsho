@@ -15,10 +15,7 @@ class NinshoController < Ninsho.parent_controller.constantize
   end
 
   def resource_params
-    {
-      provider: env['omniauth.auth']['provider'],
-      uid: env['omniauth.auth']['uid']
-    }
+    env['omniauth.auth']
   end
 
   # Proxy to devise map name
@@ -42,7 +39,7 @@ class NinshoController < Ninsho.parent_controller.constantize
 
   # Build a devise resource.
   # Assignment bypasses attribute protection when :unsafe option is passed
-  def build_resource 
-      self.resource = resource_class.new(resource_params)
+  def build_resource_from_omniauth 
+      self.resource = resource_class.from_omniauth(resource_params)
   end
 end
