@@ -1,4 +1,5 @@
 module NinshoHelper
+  PARENT_RESOURCE_NAME = Ninsho.parent_resource_name.to_s.downcase
 
   def store_location
     session[:return_to] = request.fullpath
@@ -18,29 +19,32 @@ module NinshoHelper
   end
 
   def sign_out
-    session[:user_id] = nil 
+    session["#{PARENT_RESOURCE_NAME}_id".to_sym] = nil 
   end
 
-  def sign_in_and_redirect(user_id, path=nil)
-    session[:user_id] = user_id
+  def sign_in_and_redirect(parent_id, path=nil)
+    session["#{PARENT_RESOURCE_NAME}_id".to_sym] = parent_id
     redirect_to path
   end
 
-  def sign_in(user_id)
-    session[:user_id] = user_id
+  def sign_in(parent_id)
+    session["#{PARENT_RESOURCE_NAME}_id".to_sym] = parent_id
   end
 
-  def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id] 
-  end
+  class_eval <<-METHODS, __FILE__, __LINE__ + 1
+    def current_#{PARENT_RESOURCE_NAME}
+      @current_#{PARENT_RESOURCE_NAME} ||= #{Ninsho.parent_resource_name}.find(session[:#{PARENT_RESOURCE_NAME}_id]) if session[:#{PARENT_RESOURCE_NAME}_id] 
+    end
 
-  def signed_in?
-    current_user.present? 
-  end
+    def #{PARENT_RESOURCE_NAME}_signed_in?
+      current_#{PARENT_RESOURCE_NAME}.present? 
+    end
 
-  def authenticate_user!
-    deny_access unless signed_in?
-  end
+    def authenticate_#{PARENT_RESOURCE_NAME}!
+      deny_access unless #{PARENT_RESOURCE_NAME}_signed_in?
+    end
+  METHODS
+
 
   # Method used by sessions controller to sign out a user. 
   # You can overwrite it in your ApplicationController

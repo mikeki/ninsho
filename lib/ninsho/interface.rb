@@ -15,6 +15,7 @@ module Ninsho
         #Set the belongs_to association by ActiveRecord
         associations.each do |associated_model|
           belongs_to associated_model.to_sym
+          Ninsho.parent_resource_name = Ninsho.ref(associated_model.to_s.classify).get
         end
       end
     end

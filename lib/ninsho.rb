@@ -20,6 +20,9 @@ module Ninsho
 
   mattr_accessor :providers
   @@providers = [ :facebook ]
+
+  mattr_accessor :parent_resource_name
+  @@parent_resource_name = '' 
   
   def self.setup
     yield self

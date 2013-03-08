@@ -35,6 +35,11 @@ class NinshoController < Ninsho.parent_controller.constantize
     instance_variable_set(:"@#{resource_name}", new_resource)
   end
 
+  # Parent resource
+  def parent_resource
+    resource_class.reflect_on_all_associations(:belongs_to).first.name.to_s
+  end
+
   # Build a devise resource.
   # Assignment bypasses attribute protection when :unsafe option is passed
   def build_resource 

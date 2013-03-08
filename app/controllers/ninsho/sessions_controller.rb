@@ -6,9 +6,9 @@ class Ninsho::SessionsController < NinshoController
 
   def create
     resource = build_resource
-    user = resource.build_user
+    user = resource.send("build_#{parent_resource}".to_sym)
     if resource.save
-      sign_in resource.user_id
+      sign_in resource.reload.send("#{parent_resource}_id".to_sym)
       redirect_to_root
     else
       redirect_to_root
