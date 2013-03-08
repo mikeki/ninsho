@@ -20,7 +20,7 @@ class NinshoController < Ninsho.parent_controller.constantize
 
   # Proxy to devise map name
   def resource_name
-    Ninsho.resource_name
+    Ninsho.resource_name #authentication
   end
 
   def resource_class

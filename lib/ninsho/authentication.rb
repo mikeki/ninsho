@@ -1,9 +1,12 @@
 module Ninsho
   class Authentication
+    PARENT_RESOURCE_NAME = Ninsho.parent_resource_name.to_s.downcase
+
      def initialize(omniauth = nil)
       @omniauth = omniauth
       @provider = omniauth['provider'] 
       @uid = omniauth['uid']
+      @email = omniauth['info']['email']
      end
 
      def authenticated?
@@ -15,10 +18,17 @@ module Ninsho
      end
 
      def from_user
-       auth = Ninsho.resource_class.new(provider: @provider, uid: @uid) 
-       auth.send("build_#{Ninsho.parent_resource_name.to_s.downcase}".to_sym)
-       auth.send(:save)
-       auth.send(Ninsho.parent_resource_name.to_s.downcase.to_sym)
+       user = Ninsho.parent_resource_name.send :find_by_email, @email
+       if user
+         user.send("#{Ninsho.resource_name.pluralize}").build(provider: @provider, uid: @uid)
+         user.send(:save)
+         user
+       else
+         user = Ninsho.parent_resource_name.send :new, { email: @email }
+         user.send("#{Ninsho.resource_name.pluralize}").build(provider: @provider, uid: @uid)
+         user.send(:save)
+         user
+       end
      end
 
      def user
