@@ -21,6 +21,23 @@ module ActiveRecord
         invoke "active_record:model", [name], :migration => false unless model_exists? && behavior == :invoke
       end
 
+     def inject_ninsho_content
+      content = <<CONTENT
+  attr_accessible :provider, :uid
+  # belongs_to_ninsho :user
+CONTENT
+
+      class_path = if namespaced?
+        class_name.to_s.split("::")
+      else
+        [class_name]
+      end
+
+      indent_depth = class_path.size - 1
+      content = content.split("\n").map { |line| "  " * indent_depth + line } .join("\n") << "\n"
+      inject_into_class(model_path, class_path.last, content) if model_exists?
+     end
+
        def migration_data
 <<RUBY
       ## Database authentications 

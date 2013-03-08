@@ -48,3 +48,5 @@ end
 
 require 'ninsho/routes_drawer'
 require 'ninsho/rails'
+require 'ninsho/interface'
+require 'ninsho/railtie'

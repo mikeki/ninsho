@@ -22,4 +22,5 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency("orm_adapter", "~> 0.1")
   gem.add_dependency "railties", "~> 3.1"
+  gem.add_dependency "activerecord", ">= 3.0"
 end

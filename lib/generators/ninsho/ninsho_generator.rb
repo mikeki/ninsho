@@ -17,6 +17,7 @@ module Ninsho
        ninsho_routes << %Q(, :skip => :all) unless options.routes?
        route ninsho_routes
      end
+
     end
   end
 end

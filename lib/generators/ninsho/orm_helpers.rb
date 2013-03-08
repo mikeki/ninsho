@@ -1,6 +1,7 @@
 module Ninsho
   module Generators
     module OrmHelpers
+
       def model_exists?
         File.exists?(File.join(destination_root, model_path))
       end
