@@ -1,6 +1,6 @@
 module Ninsho
   # Responsible for handling ninsho mappings and routes configuration
-  # The required value in devise_for is actually not used internally, but it's
+  # The required value in ninsho_on is actually not used internally, but it's
   # inflected to find all other values.
   #
   #   map.ninsho_on :authentications

@@ -12,6 +12,9 @@ module Ninsho
         template 'ninsho.rb', "config/initializers/ninsho.rb"
       end
 
+      def display_readme
+        readme "README" if behavior == :invoke
+      end
     end
   end
 end

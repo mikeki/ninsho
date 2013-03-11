@@ -1,0 +1,10 @@
+===============================================================================
+
+Hey you, thanks for installing Ninsho, here are some tips: 
+
+  1. You can copy Ninsho views (for customization) to your app by running:
+
+       rails g ninsho:views
+
+===============================================================================
+

@@ -1,4 +1,5 @@
 module NinshoHelper
+  RESOURCE_NAME = Ninsho.resource_name.singularize
   PARENT_RESOURCE_NAME = Ninsho.parent_resource_name.to_s.downcase
 
   def store_location
@@ -43,7 +44,12 @@ module NinshoHelper
     def authenticate_#{PARENT_RESOURCE_NAME}!
       deny_access unless #{PARENT_RESOURCE_NAME}_signed_in?
     end
+
   METHODS
+
+  define_method "link_#{RESOURCE_NAME}_with" do |provider|
+    link_to "Connect with #{provider.to_s.capitalize}", "auth/#{provider.to_s}"
+  end
 
 
   # Method used by sessions controller to sign out a user. 
