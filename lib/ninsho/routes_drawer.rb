@@ -3,6 +3,8 @@ module Ninsho
   # The required value in ninsho_on is actually not used internally, but it's
   # inflected to find all other values.
   #
+  # routes_drawer.to #=> Authentication
+  #
   class RoutesDrawer #:nodoc:
     attr_reader :singular_name, :klass, :resource
 

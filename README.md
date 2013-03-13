@@ -124,6 +124,7 @@ en:
 ### Changelog
 
 * Current gem version 0.0.1
+* Add more documentation on code
 
 ### Devs
 
@@ -136,7 +137,7 @@ en:
 * Support for Mongoid
 * Add handy helpers
 * Add aouth token for Facebook friends
-* Add more documentation on code
+
 
 ## Credits
 Icalia Labs - weare@icalialabs.com
@@ -146,7 +147,17 @@ Icalia Labs - weare@icalialabs.com
 
 [Like us on Facebook](https://www.facebook.com/icalialab "Like us on Facebook")
 
+### Special thanks
+
+Inspired by the plataformatec guys, and pieces of code based on you! Thanks!
+
+https://github.com/plataformatec/
 
 ### License
 
 MIT License. Copyright 2012-2013 IcaliaLabs. http://icalialabs.com
+
+
+
+
+

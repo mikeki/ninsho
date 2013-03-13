@@ -6,5 +6,9 @@ Hey you, thanks for installing Ninsho, here are some tips:
 
        rails g ninsho:views
 
+  2. Having trouble?, Check out the documentation at:
+
+       https://github.com/IcaliaLabs/ninsho
+
 ===============================================================================
 

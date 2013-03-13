@@ -20,7 +20,9 @@ module Ninsho
           Ninsho.parent_resource_name = Ninsho.ref(associated_model.to_s.classify).get
         end
       end
-
+      
+      # Responsible for creating or find the record with the
+      # omniauth hash
       def from_omniauth(omniauth = nil)
         Ninsho::Authentication.new(omniauth)
       end

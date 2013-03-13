@@ -2,7 +2,6 @@ module Ninsho
   module Generators
     # Include this module in your generator to generate Ninsho views.
     # `copy_views` is the main method and by default copies all views
-    # with forms.
     module ViewPathTemplates #:nodoc:
       extend ActiveSupport::Concern
 

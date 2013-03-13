@@ -1,3 +1,4 @@
+# Thanks to plataformatec for providing this 
 begin
   require "omniauth"
   require 'omniauth/version'

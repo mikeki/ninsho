@@ -4,6 +4,7 @@ class Ninsho::SessionsController < NinshoController
     @providers = Ninsho.providers
   end
 
+  # Handles the omniauth record creation
   def create
     resource = build_resource_from_omniauth
     if resource.authenticated?

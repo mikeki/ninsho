@@ -40,7 +40,7 @@ CONTENT
 
        def migration_data
 <<RUBY
-      ## Database authentications 
+      ## Ninsho model fields
       t.integer :user_id
       t.string :provider
       t.string :uid

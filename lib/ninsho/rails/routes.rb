@@ -1,6 +1,5 @@
-
 module ActionDispatch::Routing
-  
+
 
   class Mapper
     #Includes the ninsho_on method for routes. This method is responsible
@@ -20,22 +19,21 @@ module ActionDispatch::Routing
     #       authentication_session_path POST /authentication/:provider/callback { controller: 'ninsho/sessions', action: 'create' }
     #   destroy_authentication_session_path DELETE /sign_out { controller: 'ninsho/sessions', action: 'destroy' }
     #
+    def ninsho_on(resources_name)
+      drawer = Ninsho::RoutesDrawer.new resources_name
+      Ninsho.resource_class = drawer.to
+      Ninsho.resource_name = drawer.resource
+      ninsho_session(drawer.singular_name)
+    end
 
-     def ninsho_on(resources_name)
-       drawer = Ninsho::RoutesDrawer.new resources_name
-       Ninsho.resource_class = drawer.to
-       Ninsho.resource_name = drawer.resource
-       ninsho_session(drawer.singular_name)
-     end
+    protected
 
-     protected
-
-     def ninsho_session(name) #:nodoc:
-       resource :session, :only => [], :controller => 'ninsho/sessions', :path => "" do
-       get :new, :path => 'sign_in', as: "new_#{name}"
-       match :create, path: "auth/:provider/callback", as: "#{name}"
-       delete :destroy, path: 'sign_out', as: "destroy_#{name}"
-     end
-     end
+    def ninsho_session(name) #:nodoc:
+      resource :session, :only => [], :controller => 'ninsho/sessions', :path => "" do
+        get :new, :path => 'sign_in', as: "new_#{name}"
+        match :create, path: "auth/:provider/callback", as: "#{name}"
+        delete :destroy, path: 'sign_out', as: "destroy_#{name}"
+      end
+    end
   end
 end

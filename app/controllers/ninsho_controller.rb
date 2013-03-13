@@ -14,6 +14,7 @@ class NinshoController < Ninsho.parent_controller.constantize
     instance_variable_get(:"@#{resource_name}")
   end
 
+  # Omniauth hash for creating the records
   def resource_params
     env['omniauth.auth']
   end
@@ -23,6 +24,8 @@ class NinshoController < Ninsho.parent_controller.constantize
     Ninsho.resource_name #authentication
   end
 
+  # Class name for the ninsho model
+  # commonly Authentication
   def resource_class
     Ninsho.resource_class 
   end
@@ -32,13 +35,12 @@ class NinshoController < Ninsho.parent_controller.constantize
     instance_variable_set(:"@#{resource_name}", new_resource)
   end
 
-  # Parent resource
+  # Parent resource, commonly user
   def parent_resource
     resource_class.reflect_on_all_associations(:belongs_to).first.name.to_s
   end
 
-  # Build a ninsho resource.
-  # Assignment bypasses attribute protection when :unsafe option is passed
+  # Build a ninsho resource, from the omniauth hash
   def build_resource_from_omniauth 
       self.resource = resource_class.from_omniauth(resource_params)
   end

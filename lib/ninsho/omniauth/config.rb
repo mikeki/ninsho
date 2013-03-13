@@ -7,6 +7,8 @@ module Ninsho
       end
     end
 
+    # Responsible for setting upt the configuration for omniauth
+    # providers and mount it into ninsho
     class Config
       attr_accessor :strategy
       attr_reader :args, :options, :provider, :strategy_name
