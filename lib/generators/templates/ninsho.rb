@@ -7,7 +7,6 @@ Ninsho.setup do |config|
   require 'ninsho/orm/active_record'
 
 
-  #Providers
-  config.providers = [ :facebook ]
-
+  #Omniauth Providers
+  #config.omniauth :facebook, "APP_ID", "APP_SECRET", :scope => 'email'
 end

@@ -1,12 +1,12 @@
 class NinshoController < Ninsho.parent_controller.constantize
 
-  include NinshoHelper  
   helpers = %w(resource resource_name resource_class resource_params)
   hide_action *helpers
   helper_method *helpers
 
-  def flash_message(key, message) 
-    flash[key] = message 
+  def flash_message(key, action) 
+    message = I18n.t("ninsho.sessions.#{action}")
+    flash[key] = message if message.present?
   end
 
   # Gets the actual resource stored in the instance variable

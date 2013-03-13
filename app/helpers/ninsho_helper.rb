@@ -1,4 +1,5 @@
 module NinshoHelper
+
   RESOURCE_NAME = Ninsho.resource_name.singularize
   PARENT_RESOURCE_NAME = Ninsho.parent_resource_name.to_s.downcase
 
@@ -45,26 +46,29 @@ module NinshoHelper
       deny_access unless #{PARENT_RESOURCE_NAME}_signed_in?
     end
 
-  METHODS
+    METHODS
 
-  define_method "link_#{RESOURCE_NAME}_with" do |provider|
-    link_to "Connect with #{provider.to_s.capitalize}", "auth/#{provider.to_s}"
-  end
+    define_method "link_#{RESOURCE_NAME}_with" do |provider|
+      link_to "Connect with #{provider.to_s.capitalize}", "auth/#{provider.to_s}"
+    end
 
 
-  # Method used by sessions controller to sign out a user. 
-  # You can overwrite it in your ApplicationController
-  #
-  # By default it is the root_path.
-  def after_sign_out_path_for
-    redirect_to_root
-  end
+    # Method used by sessions controller to sign out a user. 
+    # You can overwrite it in your ApplicationController
+    #
+    # By default it is the root_path.
+    def redirect_on_sign_out_path
+      redirect_to_root
+    end
 
-  def redirect_to_root
-    redirect_to respond_to?(:root_path) ? root_path : "/"
-  end
+    def redirect_on_sign_in_path
+      redirect_to_root
+    end
+    def redirect_to_root
+      redirect_to respond_to?(:root_path) ? root_path : "/"
+    end
 
-  def deny_access
-    redirect_to_root
-  end
+    def deny_access
+      redirect_to_root
+    end
 end
