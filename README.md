@@ -123,8 +123,10 @@ en:
 
 ### Changelog
 
-* Current gem version 0.0.1
+* Current gem version 0.0.2
 * Add more documentation on code
+* Add aouth token for Facebook friends
+* Released gem version 0.0.1
 
 ### Devs
 
@@ -136,7 +138,6 @@ en:
 * Add tests
 * Support for Mongoid
 * Add handy helpers
-* Add aouth token for Facebook friends
 
 
 ## Credits
