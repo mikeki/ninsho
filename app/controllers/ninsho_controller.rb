@@ -1,9 +1,13 @@
 class NinshoController < Ninsho.parent_controller.constantize
 
-  helpers = %w(resource resource_name resource_class resource_params)
-  hide_action *helpers
-  helper_method *helpers
-
+  # Sets the flash message with :key, using I18n. 
+  # Example (i18n locale file):
+  #
+  #   en:
+  #     ninsho:
+  #       :sessions
+  #         signed_in: "Signed in successfully"
+  #
   def flash_message(key, action) 
     message = I18n.t("ninsho.sessions.#{action}")
     flash[key] = message if message.present?
@@ -44,4 +48,5 @@ class NinshoController < Ninsho.parent_controller.constantize
   def build_resource_from_omniauth 
       self.resource = resource_class.from_omniauth(resource_params)
   end
+
 end

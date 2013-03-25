@@ -123,9 +123,11 @@ en:
 
 ### Changelog
 
-* Current gem version 0.0.2
+* Current gem version 0.0.3
 * Add more documentation on code
 * Add aouth token for Facebook friends
+* Add handy helpers
+* Released gem version 0.0.2
 * Released gem version 0.0.1
 
 ### Devs
@@ -137,7 +139,6 @@ en:
 * Add more flexibility to handle authentications and save multiple to fields
 * Add tests
 * Support for Mongoid
-* Add handy helpers
 
 
 ## Credits

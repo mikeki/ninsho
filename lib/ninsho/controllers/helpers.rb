@@ -57,11 +57,10 @@ module Ninsho
     def authenticate_#{PARENT_RESOURCE_NAME}!
       deny_access unless #{PARENT_RESOURCE_NAME}_signed_in?
     end
-
     METHODS
 
-    define_method "link_#{RESOURCE_NAME}_with" do |provider|
-      link_to "Connect with #{provider.to_s.capitalize}", "auth/#{provider.to_s}"
+    ActiveSupport.on_load(:action_controller) do
+      helper_method "current_#{PARENT_RESOURCE_NAME}", "#{PARENT_RESOURCE_NAME}_signed_in?"
     end
 
 
