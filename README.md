@@ -149,8 +149,12 @@ en:
   ninsho:
     sessions:
       signed_in: "Signed in successfully"
-      signed_out: "Signed out successfully"
+      signed_out: "Signed out successfully"            
 ```
+
+###Psst! Here is a live example in rails
+
+[Rails ninsho example](https://github.com/IcaliaLabs/ninsho_example)
 
 ### Changelog
 
@@ -159,6 +163,7 @@ en:
 * Add aouth token for Facebook friends
 * Add more flexibility to handle authentications and save to multiple fields
 * Add handy helpers
+* Add rails live example
 * Released gem version 0.0.3
 * Released gem version 0.0.2
 * Released gem version 0.0.1
@@ -172,7 +177,7 @@ en:
 * Add tests
 * Support for Mongoid
 * Add wiki
-* Add rails live example
+
 
 
 ## Credits
