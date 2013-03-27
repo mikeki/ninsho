@@ -8,7 +8,7 @@ Ninsho is an easy flexible authentication solution when using providers
 
 ## Getting started
 
-Ninsho 0.0.1 works with rails 3.1 onwards. You can add it to your Gemfile with:
+Ninsho 0.1.0 works with rails 3.1 onwards. You can add it to your Gemfile with:
 
 ```ruby
 gem 'ninsho'
@@ -154,11 +154,12 @@ en:
 
 ### Changelog
 
-* Current gem version 0.0.3
+* Current gem version 0.1.0
 * Add more documentation on code
 * Add aouth token for Facebook friends
 * Add more flexibility to handle authentications and save to multiple fields
 * Add handy helpers
+* Released gem version 0.0.3
 * Released gem version 0.0.2
 * Released gem version 0.0.1
 
