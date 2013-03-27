@@ -121,20 +121,23 @@ So if you need to add an extra field to your ninsho model (commonly 'Authenticat
 
 Let's say we want to save the nickname from the hash into our ninsho model:
 
-1. Add the migration to the ninsho model
-	```console
-	rails g migration add_nickname_to_MODEL nickname:string
-	```
-2. Run the migration and add the callback which should look like:
+i. Add the migration to the ninsho model
+
+```console
+rails g migration add_nickname_to_MODEL nickname:string
+```
+ii. Run the migration and add the callback which should look like:
+
 ```ruby
 before_save :set_nickname
 ```
+
 ```ruby
 def set_nickname
 	self.nickname = self.auth_hash.info.nickname
 end
 ```
-3. You are good to go, and any time the user changes the nickname yours will too!
+iii. You are good to go, and any time the user changes the nickname yours will too!
 
 
 ### I18n
