@@ -6,8 +6,14 @@ module Ninsho
       base.extend(ClassMethods)
     end
 
+    def auth_hash
+      Ninsho.resource_class.auth_hash
+    end
+
     module ClassMethods
-      
+
+      attr_accessor :auth_hash
+
       def belongs_to_ninsho(*args)
         options = args.extract_options!
         
@@ -20,10 +26,11 @@ module Ninsho
           Ninsho.parent_resource_name = Ninsho.ref(associated_model.to_s.classify).get
         end
       end
-      
+
       # Responsible for creating or find the record with the
       # omniauth hash
       def from_omniauth(omniauth = nil)
+        self.auth_hash = omniauth
         Ninsho::Authentication.new(omniauth)
       end
     end

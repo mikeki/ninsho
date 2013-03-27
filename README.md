@@ -1,6 +1,6 @@
 #Ninsho
 
-Ninsho is easy flexible authentication solution when using providers
+Ninsho is an easy flexible authentication solution when using providers
 
 * Is a complete MVC solution based on Rails Engines;
 * Works with most providers out there, Github, Facebook, Twitter, Linkedin
@@ -109,6 +109,34 @@ And after that if you want ninsho to respond to that, you just need to add the p
 config.omniauth :facebook, "APP_ID", "APP_SECRET", :scope => 'email'
 ```
 
+###Custom fields
+
+Now you have access to the hash provided by any of the omniauth providers gem, as an instance method under:
+
+```ruby
+self.auth_hash
+```
+
+So if you need to add an extra field to your ninsho model (commonly 'Authentication'), it's as easy as adding a ```before_save``` callback and handle the extra stuff by yourself. Don't get it?, here ir a quick example:
+
+Let's say we want to save the nickname from the hash into our ninsho model:
+
+1. Add the migration to the ninsho model
+	```console
+	rails g migration add_nickname_to_MODEL nickname:string
+	```
+2. Run the migration and add the callback which should look like:
+```ruby
+before_save :set_nickname
+```
+```ruby
+def set_nickname
+	self.nickname = self.auth_hash.info.nickname
+end
+```
+3. You are good to go, and any time the user changes the nickname yours will too!
+
+
 ### I18n
 
 You can overwrite the ninsho locale and customize the flash messages:
@@ -126,6 +154,7 @@ en:
 * Current gem version 0.0.3
 * Add more documentation on code
 * Add aouth token for Facebook friends
+* Add more flexibility to handle authentications and save to multiple fields
 * Add handy helpers
 * Released gem version 0.0.2
 * Released gem version 0.0.1
@@ -136,9 +165,10 @@ en:
 
 ### Future
 
-* Add more flexibility to handle authentications and save multiple to fields
 * Add tests
 * Support for Mongoid
+* Add wiki
+* Add rails live example
 
 
 ## Credits

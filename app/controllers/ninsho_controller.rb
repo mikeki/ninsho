@@ -46,7 +46,7 @@ class NinshoController < Ninsho.parent_controller.constantize
 
   # Build a ninsho resource, from the omniauth hash
   def build_resource_from_omniauth 
-      self.resource = resource_class.from_omniauth(resource_params)
+    self.resource = resource_class.from_omniauth(resource_params)
   end
 
 end

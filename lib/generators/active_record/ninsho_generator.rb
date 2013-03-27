@@ -23,7 +23,7 @@ module ActiveRecord
 
      def inject_ninsho_content
       content = <<CONTENT
-  attr_accessible :provider, :uid
+  attr_accessible :provider, :uid, :oauth_token
   # belongs_to_ninsho :user
 CONTENT
 
