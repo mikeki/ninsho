@@ -37,7 +37,7 @@ module Ninsho
   # The class name for the resource relation
   # Is commonly the class User
   mattr_accessor :parent_resource_name
-  @@parent_resource_name = '' 
+  @@parent_resource_name = 'User'
 
   # Hash which contains omniauth configurations
   mattr_reader :omniauth_configs
