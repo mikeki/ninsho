@@ -16,7 +16,7 @@ module Ninsho
 
       def belongs_to_ninsho(*args)
         options = args.extract_options!
-        Ninsho.parent_resource_holding_attributes = options[:hold_attributes]
+        Ninsho.parent_resource_holding_attributes = options[:hold_attributes] || []
         options.reject! { |k, v| k == :hold_attributes }
         
         associations = args.collect(&:to_s).collect(&:downcase)
