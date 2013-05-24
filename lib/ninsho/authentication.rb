@@ -32,6 +32,7 @@ module Ninsho
      def from_user
        attrs = { email: @email }
        user = Ninsho.parent_resource_name.where(attrs).first_or_initialize
+       user = Ninsho.parent_resource_name.new if @provider == "twitter"
        user.attributes = holding_attributes(attrs) if user.new_record?
        user.send("#{Ninsho.resource_name.pluralize}").build(provider: @provider, uid: @uid, oauth_token: @oauth_token)
        user.save
