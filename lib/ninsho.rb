@@ -42,6 +42,10 @@ module Ninsho
   # Hash which contains omniauth configurations
   mattr_reader :omniauth_configs
   @@omniauth_configs = ActiveSupport::OrderedHash.new
+
+  # Attributes to be updated to the parent resource class
+  mattr_accessor :parent_resource_holding_attributes
+  @@parent_resource_holding_attributes = []
   
   # Default setup for Ninsho. 
   # Run the rails g ninsho:install to create a fresh initializer
