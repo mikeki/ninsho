@@ -53,6 +53,8 @@ module Ninsho
 
      private
 
+     # Recursive method to look for the key on the omniauth hash
+     # and returns the value
      def nested_hash_value(obj,key)
        if obj.respond_to?(:key?) && obj.key?(key)
          obj[key]
