@@ -158,12 +158,16 @@ en:
 
 ### Changelog
 
-* Current gem version 0.1.0
+* Current gem version 0.1.2
+* Add hold_attributes to authentication relation
+* Add default User as parent resource name
 * Add more documentation on code
 * Add aouth token for Facebook friends
 * Add more flexibility to handle authentications and save to multiple fields
 * Add handy helpers
 * Add rails live example
+* Released gem version 0.1.1
+* Released gem version 0.1.0
 * Released gem version 0.0.3
 * Released gem version 0.0.2
 * Released gem version 0.0.1
