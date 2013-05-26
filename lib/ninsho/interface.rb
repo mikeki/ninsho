@@ -29,9 +29,9 @@ module Ninsho
 
       # Responsible for creating or find the record with the
       # omniauth hash
-      def from_omniauth(omniauth = nil)
+      def from_omniauth(omniauth = nil, current_user = nil)
         self.auth_hash = omniauth
-        Ninsho::Authentication.new(omniauth)
+        Ninsho::Authentication.new(omniauth, current_user)
       end
     end
   end
