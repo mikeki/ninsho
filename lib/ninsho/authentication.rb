@@ -4,12 +4,13 @@ module Ninsho
   # omniauth hash 
   #
   class Authentication
-     def initialize(omniauth = nil)
+     def initialize(omniauth = nil, current_user = nil)
       @omniauth = omniauth
       @provider = omniauth['provider'] 
       @uid = omniauth['uid']
       @oauth_token = @omniauth.credentials.token
       @email = omniauth['info']['email']
+      @current_user = current_user
      end
 
      def authenticated?
@@ -38,7 +39,7 @@ module Ninsho
 
      # Check if a parent record is returned
      def user
-       from_oauth.try(Ninsho.parent_resource_name.to_s.downcase.to_sym) || from_user
+       @current_user || from_oauth.try(Ninsho.parent_resource_name.to_s.downcase.to_sym) || from_user
      end
   end
 end
