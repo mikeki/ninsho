@@ -30,7 +30,7 @@ module Ninsho
      # Method to create an authentication record when user is find,
      # otherwise creates a user with the authentication
      def from_user
-       user = Ninsho.parent_resource_name.send :find_by_email, @email
+       user @current_user || Ninsho.parent_resource_name.send :find_by_email, @email
        user = Ninsho.parent_resource_name.send :new, { email: @email } unless user
        user.send("#{Ninsho.resource_name.pluralize}").build(provider: @provider, uid: @uid, oauth_token: @oauth_token)
        user.send(:save)
@@ -39,7 +39,7 @@ module Ninsho
 
      # Check if a parent record is returned
      def user
-       @current_user || from_oauth.try(Ninsho.parent_resource_name.to_s.downcase.to_sym) || from_user
+       from_oauth.try(Ninsho.parent_resource_name.to_s.downcase.to_sym) || from_user
      end
   end
 end
